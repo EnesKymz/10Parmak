@@ -3,7 +3,7 @@
 
 - 👨‍💻 All of my projects are available at [https://github.com/EnesKymz](https://github.com/EnesKymz)
 
-- 📝 I regularly write articles on [enes-webtech.netlify.app](enes-webtech.netlify.app)
+- 📝 My Website [enes-webtech.netlify.app](enes-webtech.netlify.app)
 
 - 💬 Ask me about **C#**
 
