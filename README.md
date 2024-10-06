@@ -1,5 +1,4 @@
 <h1 align="center">Hi 👋, I'm Ökkeş Enes Kaymaz</h1>
-- 🔭 I’m currently working on **Quantum-Crypto-Telegram-MiniApp**
 
 
 - 👨‍💻 All of my projects are available at [https://github.com/EnesKymz](https://github.com/EnesKymz)
