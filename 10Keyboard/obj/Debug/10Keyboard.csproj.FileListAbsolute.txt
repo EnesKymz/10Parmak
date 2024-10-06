@@ -1,0 +1,15 @@
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\bin\Debug\10Keyboard.exe.config
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\bin\Debug\10Keyboard.exe
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\bin\Debug\10Keyboard.pdb
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.csproj.AssemblyReference.cache
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\MainWindow.g.cs
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\App.g.cs
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard_MarkupCompile.cache
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard_MarkupCompile.lref
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\MainWindow.baml
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.g.resources
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\_10Keyboard.Properties.Resources.resources
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.csproj.GenerateResource.cache
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.csproj.CoreCompileInputs.cache
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.exe
+C:\Users\Ökkeş Enes Kaymaz\source\repos\10Keyboard\10Keyboard\obj\Debug\10Keyboard.pdb
