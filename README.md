@@ -1,13 +1,13 @@
-<h1 align="center">Hi 👋, I'm Ökkeş Enes Kaymaz</h1>
+<h1 align="center">Merhaba 👋, Ben Ökkeş Enes Kaymaz</h1>
 
 
-- 👨‍💻 All of my projects are available at [https://github.com/EnesKymz](https://github.com/EnesKymz)
+- 👨‍💻 Tüm projelerime buradan ulaşabilirsiniz: [https://github.com/EnesKymz](https://github.com/EnesKymz)
 
-- 📝 My Website [enes-webtech.netlify.app](enes-webtech.netlify.app)
+- 📝 Kişisel Web Sitem: [enes-webtech.netlify.app](enes-webtech.netlify.app)
 
-- 💬 Ask me about **C#**
+- 💬 💬 **C#** hakkında sorularınızı sorabilirsiniz.
 
-- 📫 How to reach me **okkeseneskaymaz@proton.me**
+- 📫İletişim için: **okkeseneskaymaz@proton.me**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
