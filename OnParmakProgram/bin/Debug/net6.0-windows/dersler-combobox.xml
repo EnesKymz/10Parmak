@@ -1,0 +1,46 @@
+<ders-items>
+  <dersler>
+    <sayi sayii="1">1. Ders: K</sayi>
+    <sayi sayii="2">2. Ders: A</sayi>
+    <sayi sayii="3">3. Ders: Ü</sayi>
+    <sayi sayii="4">4. Ders: T</sayi>
+    <sayi sayii="5">5. Ders: E</sayi>
+    <sayi sayii="6">6. Ders: M</sayi>
+    <sayi sayii="7">7. Ders: İ</sayi>
+    <sayi sayii="8">8. Ders: L</sayi>
+    <sayi sayii="9">9. Ders: U</sayi>
+    <sayi sayii="10">10. Ders: Y</sayi>
+    <sayi sayii="11">11. Ders: Ş</sayi>
+    <sayi sayii="12">12. Ders: İ</sayi>
+    <sayi sayii="13">13. Ders: R</sayi>
+    <sayi sayii="14">14. Ders: Ğ</sayi>
+    <sayi sayii="15">15. Ders: N</sayi>
+    <sayi sayii="16">16. Ders: G</sayi>
+    <sayi sayii="17">17. Ders: H</sayi>
+    <sayi sayii="18">18. Ders: F</sayi>
+    <sayi sayii="19">19. Ders: P </sayi>
+    <sayi sayii="20">20. Ders: O</sayi>
+    <sayi sayii="21">21. Ders: D</sayi>
+    <sayi sayii="22">22. Ders: C</sayi>
+    <sayi sayii="23">23. Ders: S</sayi>
+    <sayi sayii="24">24. Ders: V</sayi>
+    <sayi sayii="25">25. Ders: B</sayi>
+    <sayi sayii="26">26. Ders: Ö</sayi>
+    <sayi sayii="27">27. Ders: Z</sayi>
+    <sayi sayii="28">28. Ders: Ç</sayi>
+    <sayi sayii="29">29. Ders: J</sayi>
+    <sayi sayii="30">30. Ders: Q</sayi>
+    <sayi sayii="31">31. Ders: W</sayi>
+    <sayi sayii="32">32. Ders: X</sayi>
+    <sayi sayii="33">33. Ders: Shift</sayi>
+    <sayi sayii="34">34. Ders: Caps Lock</sayi>
+    <sayi sayii="35">35. Ders: Kesme İşareti (')</sayi>
+    <sayi sayii="36">36. Ders: Nokta (.)</sayi>
+    <sayi sayii="37">37. Ders: İki Nokta (:)</sayi>
+    <sayi sayii="38">38. Ders: Virgül (,)</sayi>
+    <sayi sayii="39">39. Ders: Noktalı Virgül (;)</sayi>
+    <sayi sayii="40">40. Ders: Soru İşareti (?)</sayi>
+    <sayi sayii="41">41. Ders: Ünlem (!)</sayi>
+    <sayi sayii="42">42. Ders: Kısa Çizgi (-)</sayi>
+  </dersler>
+</ders-items>

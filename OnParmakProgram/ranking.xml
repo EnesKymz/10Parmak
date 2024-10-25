@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ranking>
+  <Enes>
+    <toplamkelimesayisi>112</toplamkelimesayisi>
+    <dakikabasinakelime>112</dakikabasinakelime>
+    <toplamdogrukelime>63</toplamdogrukelime>
+    <toplamyanliskelime>49</toplamyanliskelime>
+    <toplamkelime>14</toplamkelime>
+    <hataorani>6943,75</hataorani>
+    <ToplamVurus>867</ToplamVurus>
+  </Enes>
+  <gsr>
+    <toplamkelimesayisi>2</toplamkelimesayisi>
+    <dakikabasinakelime>2</dakikabasinakelime>
+    <toplamdogrukelime>0</toplamdogrukelime>
+    <toplamyanliskelime>2</toplamyanliskelime>
+    <toplamkelime>0</toplamkelime>
+    <hataorani>69100</hataorani>
+    <ToplamVurus>12</ToplamVurus>
+  </gsr>
+</ranking>
