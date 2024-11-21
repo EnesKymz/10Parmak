@@ -1,69 +1,64 @@
+ï»¿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Runtime.InteropServices;
 
 namespace OnParmakProgram
 {
-    public partial class Form1 : Form
+    public partial class Works : Form
     {
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private const int WM_VSCROLL = 0x115;
         private const int SB_LINEDOWN = 1;
-        public Form1()
+        public Works()
         {
             InitializeComponent();
+
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Works_Load(object sender, EventArgs e)
         {
-            textBox2.Focus();
             comboBox2.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
+            comboBox3.SelectedIndex = 0;
+
             richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
-            serbestmod = true;
             if (this.WindowState == FormWindowState.Maximized)
             {
                 panel1.Location = new Point(((this.Width / 2) - (panel1.Width / 2)), panel1.Location.Y);
                 panel3.Location = new Point(((this.Width / 2) - (panel3.Width / 2)), panel3.Location.Y);
             }
-
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedItem == "1. Kýsým")
+            if (comboBox1.Text !="")
             {
-
-
-                XDocument xmlDoc = XDocument.Load("./Dersdatabase.xml");
-
-
-                string[] selectedDers = comboBox1.SelectedItem.ToString().Split(':');
-
-
-                var metin = xmlDoc.Descendants("Ders")
-                                  .Where(d => d.Attribute("adi").Value == selectedDers[0])
-                                  .Select(d => d.Element("Metin").Value)
-                                  .FirstOrDefault();
-                richTextBox1.Text = metin ?? "Metin bulunamadý.";
-                if (metin != null)
+               
+                    string selectedYear = comboBox1.Text.Split(' ').Last();
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load("./katiplikmetinleri" + selectedYear + ".xml");
+                    XmlNodeList metinList = xmlDoc.SelectNodes("/metinler/zabitkatipligimetinleri/metinler[@yil='2023']/metin");
+                    comboBox3.Items.Clear();
+                    foreach (XmlNode metin in metinList)
+                    {
+                        string metinnID = metin.Attributes["metinn"].Value;
+                        comboBox3.Items.Add(metinnID);
+                    }
+                if (comboBox3.Items.Count > 0)
                 {
-                    richTextBox1.Text = metin.Replace("\n", Environment.NewLine).Trim();
+                    comboBox3.SelectedIndex = 0;
                 }
             }
         }
@@ -76,36 +71,25 @@ namespace OnParmakProgram
 
             time.Text = $"{hour} : {minute}";
         }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
         private int remainingTime;
         bool timeraktif = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (checkBox7.Checked == false)
-            {
-                if (timeraktif == false)
-                {
-                    textBox2.Clear();
-                    textBox2.Focus();
-                    UpdateTimeText();
-                    int minutes = (int)numericUpDown1.Value;
-                    int seconds = (int)numericUpDown2.Value;
-                    remainingTime = (minutes * 60) + (seconds);
-                    timer1.Start();
-                    button1.Text = "Tekrar Dene";
-                    timeraktif = true;
-                    serbestmod = false;
 
-                }
+            if (timeraktif == false)
+            {
+                textBox2.Clear();
+                textBox2.Focus();
+                UpdateTimeText();
+                int minutes = (int)numericUpDown1.Value;
+                int seconds = (int)numericUpDown2.Value;
+                remainingTime = (minutes * 60) + (seconds);
+                timer1.Start();
+                button1.Text = "Tekrar Dene";
+                timeraktif = true;
+                serbestmod = false;
+
+
             }
             if (timer1.Enabled == true)
             {
@@ -131,7 +115,7 @@ namespace OnParmakProgram
                 timer1.Stop();
                 MessageBox.Show("Zaman doldu!");
                 time.Text = "00 : 00";
-                button1.Text = "Baþlat";
+                button1.Text = "BaÅŸlat";
 
                 string textBox2Content = textBox2.Text;
 
@@ -140,7 +124,11 @@ namespace OnParmakProgram
 
                 int spaceCount = textBox2Content.Count(c => c == ' ');
                 int totalWords = textBox2Content.Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
-                double wordsPerMinute = elapsedMinutes > 0 ? (double)totalWords / elapsedMinutes : totalWords;
+
+                int minutes = (int)numericUpDown1.Value;
+                int seconds = (int)numericUpDown2.Value;
+                int totalTime = (minutes * 60) + seconds;
+                double wordsPerMinute = (totalWords * 60) / totalTime;
                 int totalLetterCount = textBox2.Text.Count(char.IsLetter);
 
 
@@ -175,11 +163,6 @@ namespace OnParmakProgram
             }
         }
 
-        private void textBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
             if (checkBox2.Checked)
@@ -191,7 +174,8 @@ namespace OnParmakProgram
             }
         }
         private int scrollStepCount = 0;
-        private const int maxScrollSteps = 4;
+        private const int maxScrollSteps = 1;
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (!checkBox7.Checked)
@@ -251,18 +235,16 @@ namespace OnParmakProgram
             int lastVisibleLine = firstVisibleLine + visibleLines - 1;
 
             string inputText = textBox2.Text;
-
             if (inputText.Length > 0)
             {
                 int charIndex = textBox2.GetCharIndexFromPosition(new Point(0, textBox2.ClientSize.Height));
                 int currentLine = richTextBox1.GetLineFromCharIndex(charIndex);
 
-                if ((currentLine > lastVisibleLine) && (lastVisibleLine != totalLines))
+                if (currentLine > lastVisibleLine - 4)
                 {
                     StartSmoothScroll();
                 }
             }
-
 
         }
         private void StartSmoothScroll()
@@ -273,7 +255,6 @@ namespace OnParmakProgram
                 timer2.Start();
             }
         }
-
         private void KelimeTakibi()
         {
             string correctText = richTextBox1.Text;
@@ -348,7 +329,7 @@ namespace OnParmakProgram
                                   .Where(d => d.Attribute("adi").Value == selectedDers[0])
                                   .Select(d => d.Element("Metin").Value)
                                   .FirstOrDefault();
-                richTextBox1.Text = metin ?? "Metin bulunamadý.";
+                richTextBox1.Text = metin ?? "Metin bulunamadÄ±.";
                 if (metin != null)
                 {
                     richTextBox1.Text = metin.Replace("\n", Environment.NewLine).Trim();
@@ -372,58 +353,27 @@ namespace OnParmakProgram
             }
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (comboBox2.SelectedItem.ToString() == "1. Kýsým")
+            if (comboBox2.SelectedItem.ToString() == "ZabÄ±t KatipliÄŸi")
             {
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load("./dersler-combobox.xml");
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load("./katiplikmetinleri2023.xml");
 
-                XmlNodeList zabitKatipligiList = xmlDoc.SelectNodes("/ders-items/dersler/sayi");
+                    XmlNodeList zabitKatipligiList = xmlDoc.SelectNodes("/metinler/zabitkatipligicombobox/sayi");
 
-                comboBox1.Items.Clear();
-                foreach (XmlNode zabitKatip in zabitKatipligiList)
-                {
-                    comboBox1.Items.Add(zabitKatip.InnerText);
-                }
-                comboBox1.SelectedIndex = 0;
+                    comboBox1.Items.Clear();
+                    foreach (XmlNode zabitKatip in zabitKatipligiList)
+                    {
+                        comboBox1.Items.Add(zabitKatip.InnerText);
+                    }
             }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Ýsim Giriniz.")
+            if (textBox1.Text == "Ä°sim Giriniz.")
             {
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
@@ -434,8 +384,32 @@ namespace OnParmakProgram
         {
             if (textBox1.Text == "")
             {
-                textBox1.Text = "Ýsim Giriniz.";
+                textBox1.Text = "Ä°sim Giriniz.";
                 textBox1.ForeColor = Color.Gray;
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBox3.SelectedItem != null)
+            {
+                string selectedMetinnID = comboBox3.SelectedItem.ToString();
+                string selectedYear = comboBox1.Text.Split(' ').Last();
+
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load("./katiplikmetinleri"+selectedYear+".xml");
+
+                XmlNode metinNode = xmlDoc.SelectSingleNode($"/metinler/zabitkatipligimetinleri/metinler[@yil='2023']/metin[@metinn='{selectedMetinnID}']");
+
+                if (metinNode != null)
+                {
+                    richTextBox1.Text = metinNode.InnerText;
+                }
+                else
+                {
+                    MessageBox.Show("Metin bulunamadÄ±.");
+                }
             }
         }
         bool serbestmod = false;
@@ -444,22 +418,18 @@ namespace OnParmakProgram
             if (!checkBox7.Checked)
             {
                 serbestmod = false;
-                textBox2.Clear();
             }
             else
             {
                 serbestmod = true;
-                if (timer1.Enabled == true)
-                {
-                    timer1.Stop();
-                    timeraktif = false;
-
-                }
             }
+
         }
+
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+
             SendMessage(richTextBox1.Handle, WM_VSCROLL, (IntPtr)SB_LINEDOWN, IntPtr.Zero);
 
             scrollStepCount++;
@@ -482,6 +452,16 @@ namespace OnParmakProgram
             textBox2.Clear();
             richTextBox1.SelectionStart = 0;
             richTextBox1.ScrollToCaret();
+        }
+
+        private void Works_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void Works_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
